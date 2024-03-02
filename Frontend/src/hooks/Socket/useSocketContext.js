@@ -16,7 +16,7 @@ export const useSocketContext = () => {
 
   useEffect(() => {
     if (localStorage.getItem("userId") != undefined) {
-      socket = io("http://localhost:8000", {
+      socket = io("http://api.oceanoex.com", {
         transports: ["websocket"],
         query: { userId: localStorage.getItem("userId") },
       });
