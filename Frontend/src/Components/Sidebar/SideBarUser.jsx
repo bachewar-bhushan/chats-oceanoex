@@ -56,8 +56,8 @@ const SideBarUser = (props) => {
             <div className="text-slate-400">
               {props.user?.participants[0]?._id ===
                 selectedUser?.participants[0]?._id && newMessage.length > 0
-                ? newMessage[newMessage.length - 1]?.message
-                : props.user?.messages[0]?.message}
+                ? newMessage[newMessage.length - 1].message
+                : props.user?.messages[0].message}
             </div>
           </div>
         </div>
@@ -76,19 +76,19 @@ const SideBarUser = (props) => {
             <img src={props.group.groupPhoto} alt="profile" />
           </div>
           <div className=" flex flex-col">
-            <div className="text-xl">{props.group?.groupName}</div>
+            <div className="text-xl">{props.group.groupName}</div>
             <div className="">
               <div className="text-slate-600">
                 {props.group?._id === selectedGroup?._id &&
                 newMessage.length > 0
-                  ? newMessage[newMessage.length - 1]?.fullName
-                  : props.group?.messages[0]?.sender.fullName} 
+                  ? newMessage[newMessage.length - 1].fullName
+                  : props.group?.messages[0].sender.fullName} 
               </div>
               <div className="text-slate-400">
                 {props.group?._id === selectedGroup?._id &&
                 newMessage.length > 0
-                  ?newMessage[newMessage.length - 1]?.message
-                  : props.group?.messages[0]?.message}
+                  ?newMessage[newMessage.length - 1].message
+                  : props.group?.messages[0].message}
               </div>
               
             </div>
