@@ -45,7 +45,7 @@ const CreateGroup = () => {
         {searchedUsers.length > 0 && (
           <div className="w-[60vw] sm:w-[24vw] flex justify-center px-[2vw]">
             <div
-              className={`relative top-full left-0 bg-slate-100 border border-gray-300 mt-1 p-[2vw] sm:p-[1vw] rounded-md w-[55vw] sm:w-[20vw] max-h-[30vh] overflow-y-auto`}
+              className={`relative top-full left-0 bg-slate-100 border border-gray-300 mt-1 p-[2vw] sm:p-[1vw] rounded-md w-[55vw] sm:w-[20vw] max-h-[30vh] overflow-y-auto  scrollbar-thumb-slate-300 scrollbar-track-slate-200 scrollbar-thin`}
             >
               <div className="sm:w-[15vw]">
                 {searchedUsers.map((user) => (
@@ -115,7 +115,7 @@ const CreateGroup = () => {
               Participants
             </p>
             {/* width changed */}
-            <div className="flex w-[73vw] sm:w-[25vw] h-[40vh] sm:mr-[1vw] overflow-y-auto justify-center bg-slate-100 rounded-xl">
+            <div className="flex w-[73vw] sm:w-[25vw] h-[40vh] sm:mr-[1vw] overflow-y-auto scrollbar-thin  scrollbar-thumb-slate-300 scrollbar-track-slate-200  justify-center bg-slate-100 rounded-xl">
               {/* columns and gap and margin changed */}
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-8 sm:gap-4 mt-1 sm:mt-4 pl-2">
                 {groupParticipants &&
