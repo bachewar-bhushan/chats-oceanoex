@@ -5,10 +5,17 @@ import { useSendGroupMessage } from "../../hooks/Group/useSendGroupMessage";
 import ImageContainer from "./ImageContainer";
 
 const InputMessage = () => {
-  const { selectedUser, image, setImage, selectedGroup, sideBarNavigation, setSelectedImage } =
-    useStateManager();
+  const {
+    selectedUser,
+    image,
+    setImage,
+    selectedGroup,
+    sideBarNavigation,
+    setSelectedImage,
+  } = useStateManager();
   const { sendMessage } = useSendMessage();
-  const {sendGroupMessage} = useSendGroupMessage()
+  const { sendGroupMessage } = useSendGroupMessage();
+  
 
   const handleSend = async (e) => {
     e.preventDefault();
@@ -18,22 +25,26 @@ const InputMessage = () => {
     const receiverId = selectedUser?.participants[0]?._id;
     const groupId = selectedGroup?._id;
 
-    if(sideBarNavigation === "chats"){
- await sendMessage(receiverId, message);
-    }else if(sideBarNavigation === "groups"){
-      await sendGroupMessage(groupId, message)
+    if (sideBarNavigation === "chats") {
+      await sendMessage(receiverId, message);
+    } else if (sideBarNavigation === "groups") {
+      await sendGroupMessage(groupId, message);
     }
-   
+
     document.getElementById("message").value = "";
-    setImage([])
-    setSelectedImage(null)
+    setImage([]);
+    setSelectedImage(null);
+    document.getElementById("message").focus();
   };
   return (
     <>
-    
       <div className=" mt-8 h-[5vh] bg-slate-100 mb-5 flex md:justify-center items-center  ">
-      <ImageContainer/>
-        <form className="flex space-x-4" encType="multipart/form-data" method="post">
+        <ImageContainer />
+        <form
+          className="flex space-x-4"
+          encType="multipart/form-data"
+          method="post"
+        >
           <label htmlFor=""></label>
           <input
             id="message"
@@ -42,9 +53,8 @@ const InputMessage = () => {
           />
           <div className="button-container h-[7vh] flex items-center  bg-slate-200 rounded-full w-[30vw] md:w-[6vw]">
             <div className="h-[8vh] w-[15vw] md:w-[3vw] p-4  bg-slate-200 rounded-l-full hover:bg-slate-300 flex items-center">
-             
               <button
-              className="hover:animate-bounce ..."
+                className="hover:animate-bounce ..."
                 type="button"
                 onClick={(e) => {
                   e.preventDefault;
@@ -68,14 +78,17 @@ const InputMessage = () => {
                 name="photo"
                 type="file"
                 onChange={(e) => {
-                  setImage(e.target.files)
-                  console.log("setImage is running")
+                  setImage(e.target.files);
+                  console.log("setImage is running");
                 }}
               />
-            </div >
+            </div>
             <div className="bg-slate-200 rounded-r-full flex items-center hover:bg-slate-300 h-[8vh] w-[15vw] md:w-[3vw] p-3">
-             
-              <button type="submit" className="hover:translate-x-2" onClick={handleSend}>
+              <button
+                type="submit"
+                className="hover:translate-x-2"
+                onClick={handleSend}
+              >
                 <svg
                   className="size-[4vh]"
                   xmlns="http://www.w3.org/2000/svg"
