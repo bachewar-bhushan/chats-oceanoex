@@ -35,7 +35,7 @@ const MessageAreaHeader = () => {
       )}
 
       {sideBarNavigation === "groups" && selectedGroup && (
-        <div className="flex justify-between items-center bg-slate-200 w-[80vw] h-[10vh] p-5 shadow-lg rounded-lg">
+        <div className="flex justify-between items-center bg-slate-200 w-[100vw] md:w-[80vw] h-[10vh] p-5 shadow-lg rounded-lg">
           <div className="flex space-x-4 items-center">
             <div className="size-[70px] ">
               <img src={selectedGroup.groupPhoto} alt="img" />

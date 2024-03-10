@@ -130,7 +130,7 @@ export const getGroups = async (req, res) => {
     const populatedGroups = await Promise.all(
       groupsChats.map(async (groupChat) => {
         if (groupChat.messages.length > 0) {
-          const lastMessage = groupChat.messages[groupChat.messages.length - 1];
+          const lastMessage = groupChat.messages[0];
           await Message.populate(lastMessage, { path: "sender" });
           groupChat.lastMessage = lastMessage;
         }
