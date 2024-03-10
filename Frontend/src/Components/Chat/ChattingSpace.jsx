@@ -140,7 +140,7 @@ const ChattingSpace = () => {
   };
 
   return (
-    <ScrollToBottom className="bg-slate-100 w-[100vw] md:w-[80vw] h-[70vh] scrollbar-thin  scrollbar-thumb-slate-300 scrollbar-track-slate-200 overflow-auto ... ">
+    <ScrollToBottom className="bg-slate-100 w-[100vw] md:w-[80vw] h-[70vh] scrollbar-thin  scrollbar-thumb-slate-300 scrollbar-track-slate-200 overflow-y-auto ">
       {messages &&
         messages.map((message, i) => {
           return messagebox(
