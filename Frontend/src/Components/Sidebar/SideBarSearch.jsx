@@ -64,7 +64,7 @@ const SideBarSearch = () => {
                 !divisionDisplay && "hidden"
               } relative top-full left-0 bg-slate-200 border border-gray-300 my-2 rounded-md w-[15vw] flex items-center `}
             >
-              <div className="overflow-y-auto max-h-[65vh]  scrollbar-thumb-slate-300 scrollbar-track-slate-200  scrollbar-thin">
+              <div className="overflow-y-auto max-h-[65vh] w-[15vw] scrollbar-thumb-slate-300 scrollbar-track-slate-200  scrollbar-thin">
                 {sideBarNavigation === "chats" &&
                   searchedUsers.map((user) => (
                     <div
