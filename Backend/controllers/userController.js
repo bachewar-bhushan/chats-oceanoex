@@ -39,7 +39,7 @@ export const myChatUsers = async (req, res) => {
             participants: loggedinUser,
             messages: { $exists: true, $not: { $size: 0 } }
           }).populate({ path: 'participants',
-          match: { _id: { $ne: req.user._id }}}).select("-messages")
+          match: { _id: { $ne: req.user._id }}}).slice('messages', -1).populate({path : 'messages', select:"message -_id"})
           res.status(200).json(users)
     } catch (error) {
         console.log(error.message)

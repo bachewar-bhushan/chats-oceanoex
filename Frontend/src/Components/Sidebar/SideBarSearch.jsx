@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef, useState } from "react";
 import { useStateManager } from "../../zustand/useStateManager";
 import { useGetAllUsers } from "../../hooks/Sidebar/useGetAllUsers";
@@ -58,13 +59,13 @@ const SideBarSearch = () => {
     return (
       <>
         {searchedUsers.length > 0 && (
-          <div className="w-[100vw] md:w-[20vw] flex justify-center">
+          <div className="w-[100vw] md:w-[20vw] flex justify-center ">
             <div
               className={` ${
                 !divisionDisplay && "hidden"
-              } relative top-full left-0 bg-slate-100 border border-gray-300 my-2 rounded-md w-[15vw] max-h-[65vh] overflow-y-auto flex items-center`}
+              } relative top-full left-0 bg-slate-200 border border-gray-300 my-2 rounded-md w-[15vw] flex items-center `}
             >
-              <div className="">
+              <div className="overflow-y-auto max-h-[65vh]  scrollbar-thumb-slate-300 scrollbar-track-slate-200  scrollbar-thin">
                 {sideBarNavigation === "chats" &&
                   searchedUsers.map((user) => (
                     <div

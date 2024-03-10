@@ -9,7 +9,13 @@ import SideBarHeader from "./SideBarHeader";
 import SideBarNavigator from "./SideBarNavigator";
 import { useGetGroups } from "../../hooks/Group/useGetGroups";
 const SideBar = () => {
-  const { myChatUsers, divisionDisplay, sideBarNavigation, myGroups, setGroupFormDivision } = useStateManager();
+  const {
+    myChatUsers,
+    divisionDisplay,
+    sideBarNavigation,
+    myGroups,
+    setGroupFormDivision,
+  } = useStateManager();
   useGetMyChatUsers();
   useGetGroups();
   return (
@@ -23,33 +29,37 @@ const SideBar = () => {
       <div className="">
         <SideBarSearch />
       </div>
-      <div className={` ${divisionDisplay && "hidden"}`}>
-      {sideBarNavigation === "chats" && (
-  <div className="max-h-[69vh] overflow-y-auto">
-    {Array.isArray(myChatUsers) && (
-      myChatUsers.map((user, index) => {
-        console.log("my chat users", user);
-        return (
-          <div key={index}>
-            <SideBarUser user={user} />
+      <div className={` ${divisionDisplay && "hidden"} scrollbar-thumb-slate-300 scrollbar-track-slate-200`}>
+        {sideBarNavigation === "chats" && (
+          <div className="max-h-[69vh] scrollbar-thin overflow-y-scroll">
+            {Array.isArray(myChatUsers) &&
+              myChatUsers.map((user, index) => {
+                console.log("my chat users", user);
+                return (
+                  <div key={index}>
+                    <SideBarUser user={user} />
+                  </div>
+                );
+              })}
           </div>
-        );
-      })
-    )}
-  </div>
-)}
-
+        )}
 
         {sideBarNavigation === "groups" && (
-          <div className="flex flex-col">
+          <div className="flex flex-col scrollbar-thumb-slate-300 scrollbar-track-slate-200">
             <div className="flex justify-center mx-2 mt-6">
-              <button onClick={(e)=>{
-                e.preventDefault()
-                setGroupFormDivision(true)
-              }} className="flex items-center bg-slate-300 w-[15vw] justify-between rounded-3xl h-[6vh] px-5 hover:bg-blue-100 border border-slate-500">
-                <span className="text-[1.5vw]">Create Group</span>
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  setGroupFormDivision(true);
+                }}
+                className="flex items-center bg-slate-300 w-[50vw] sm:w-[15vw] justify-between rounded-3xl h-[6vh] px-5 hover:bg-blue-100 border border-slate-500"
+              >
+                {/* width changed at upper class */}
+                {/* width changed at below class*/}
+                <span className="text-[5vw] sm:text-[1.5vw]">Create Group</span>
+                {/* width changed at svg*/}
                 <svg
-                  className="size-[2vw]"
+                  className="w-[7vw] sm:size-[2vw]"
                   width="800px"
                   height="800px"
                   viewBox="0 0 24 24"
@@ -99,7 +109,7 @@ const SideBar = () => {
                 </svg>
               </button>
             </div>
-            <div className="max-h-[59vh] overflow-y-auto">
+            <div className="max-h-[59vh]  scrollbar-thin  overflow-y-scroll">
               {Array.isArray(myGroups) &&
                 myGroups.map((group, index) => {
                   return (

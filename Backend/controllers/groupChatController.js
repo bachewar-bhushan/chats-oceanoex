@@ -123,9 +123,22 @@ export const getGroups = async (req, res) => {
     }).populate({
       path: "messages",
       populate: {
-        path: "sender",
-      },
-    });
+      path: "sender",
+  },
+
+    })
+    const populatedGroups = await Promise.all(
+      groupsChats.map(async (groupChat) => {
+        if (groupChat.messages.length > 0) {
+          const lastMessage = groupChat.messages[groupChat.messages.length - 1];
+          await Message.populate(lastMessage, { path: "sender" });
+          groupChat.lastMessage = lastMessage;
+        }
+        return groupChat;
+      })
+    );
+
+    
     res.status(201).json(groupsChats);
   } catch (error) {
     console.error(error.message);
