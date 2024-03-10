@@ -2,11 +2,9 @@ import React from "react";
 import { useSignin } from "../hooks/User/useSignin";
 import { Link } from "react-router-dom";
 import { useStateManager } from "../zustand/useStateManager";
-import {useNavigate} from "react-router-dom";
 import Loading from "../Components/Utils/Loading";
 
 const SignIn = () => {
-  const navigate = useNavigate();
   const {loading} = useStateManager()
   const { signin } = useSignin();
   const HandleSignIn = (e) => {
@@ -14,14 +12,14 @@ const SignIn = () => {
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
     signin(email, password);
-   
+    
   };
 
   return (
     <>
       <form action="">
-        <div className="flex bg-slate-100 flex-col items-center  h-[100vh] w-[100vw] justify-center">
-          <div className="flex flex-col items-center justify-center h-[50vh] w-[60vw] lg:w-[28vw] shadow-lg rounded-xl bg-slate-50">
+        <div className="flex bg-slate-100 flex-col items-center h-[100vh] w-[100vw] justify-center">
+          <div className="flex flex-col items-center justify-center h-[50vh] w-[85vw] md:w-[60vw] lg:w-[28vw] shadow-lg rounded-xl bg-slate-50">
             <div className="font-semibold text-3xl mb-2">Sign In</div>
 
             <div>
@@ -47,7 +45,7 @@ const SignIn = () => {
             <div>
               Don't have an account? <Link to='/signup' className="hover:text-blue-400 text-blue-800 underline">Sign Up</Link>
             </div>
-            <div className="bg-slate-300 hover:bg-slate-50 h-[7vh] w-[15vw] lg:w-[10vw]  shadow-md rounded-md mt-6 flex justify-center items-center">
+            <div className="bg-slate-300 hover:bg-slate-50 h-[7vh] md:w-[15vw] w-[30vw] lg:w-[10vw] shadow-md rounded-md mt-6 flex justify-center items-center">
               {!loading ? <button
                 className=" font-bold text-xl m-4"
                 type="submit"

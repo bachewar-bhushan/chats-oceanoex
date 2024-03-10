@@ -21,7 +21,7 @@ signup(fullname, email, password, gender);
     <>
       <form action="">
         <div className="flex bg-slate-100 flex-col items-center  h-[100vh] w-[100vw] justify-center">
-          <div className="flex flex-col items-center justify-center  h-[65vh] w-[60vw] lg:w-[28vw] shadow-lg rounded-xl bg-slate-50">
+          <div className="flex flex-col items-center justify-center  h-[65vh] w-[85vw] md:w-[60vw] lg:w-[28vw] shadow-lg rounded-xl bg-slate-50">
             <div className="font-semibold text-3xl mb-4">Sign Up</div>
             <div>
               <input
@@ -91,7 +91,7 @@ signup(fullname, email, password, gender);
             <div>
              Already have an account? <Link to='/signin' className="hover:text-blue-400 text-blue-800 underline">Sign In</Link>
             </div>
-            <div className="m-4  mt-6 bg-slate-300 hover:bg-slate-50 h-[7vh] w-[19vw] lg:w-[10vw] rounded-md shadow-md flex justify-center items-center">
+            <div className="m-4  mt-6 bg-slate-300 hover:bg-slate-50 h-[7vh] w-[30vw] md:w-[19vw] lg:w-[10vw] rounded-md shadow-md flex justify-center items-center">
             {!loading ? <button
                 className="font-bold text-xl "
                 type="submit"
