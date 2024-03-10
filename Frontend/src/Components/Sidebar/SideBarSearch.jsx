@@ -48,6 +48,9 @@ const SideBarSearch = () => {
     const handleSearchedUserClick = (user) => {
       setReceiverId(user._id);
       setNewMessage([]);
+      if (window.innerWidth < 640) {
+        navigate("/mchatspaceconversation");
+      }
     };
 
     const handleSearchedGroupClick = (group) => {

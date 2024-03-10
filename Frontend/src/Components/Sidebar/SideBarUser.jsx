@@ -78,18 +78,25 @@ const SideBarUser = (props) => {
           <div className=" flex flex-col">
             <div className="text-xl">{props.group.groupName}</div>
             <div className="">
-              <div className="text-slate-600">
-                {props.group?._id === selectedGroup?._id &&
-                newMessage.length > 0
-                  ? newMessage[newMessage.length - 1].fullName
-                  : props.group?.messages[0].sender.fullName} 
-              </div>
-              <div className="text-slate-400">
-                {props.group?._id === selectedGroup?._id &&
-                newMessage.length > 0
-                  ?newMessage[newMessage.length - 1].message
-                  : props.group?.messages[0].message}
-              </div>
+          
+            {props.group.messages && props.group.messages.length > 0 ? (
+          <>
+            <div className="text-slate-600">
+              {props.group?._id === selectedGroup?._id &&
+              newMessage.length > 0
+                ? newMessage[newMessage.length - 1].fullName
+                : props.group?.messages[0].sender.fullName}
+            </div>
+            <div className="text-slate-400">
+              {props.group?._id === selectedGroup?._id &&
+              newMessage.length > 0
+                ? newMessage[newMessage.length - 1].message
+                : props.group?.messages[0].message}
+            </div>
+          </>
+        ) : (
+          <div className="text-slate-400">No messages yet.</div>
+        )}
               
             </div>
           </div>
