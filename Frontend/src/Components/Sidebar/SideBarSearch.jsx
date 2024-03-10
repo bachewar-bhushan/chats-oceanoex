@@ -48,9 +48,6 @@ const SideBarSearch = () => {
     const handleSearchedUserClick = (user) => {
       setReceiverId(user._id);
       setNewMessage([]);
-      if (window.innerWidth < 640) {
-        navigate("/mchatspaceconversation");
-      }
     };
 
     const handleSearchedGroupClick = (group) => {
@@ -65,9 +62,9 @@ const SideBarSearch = () => {
             <div
               className={` ${
                 !divisionDisplay && "hidden"
-              } relative top-full left-0 bg-slate-200 border border-gray-300 my-2 rounded-md w-[15vw] flex items-center `}
+              } relative top-full left-0 bg-slate-200 border border-gray-300 my-2 rounded-md w-[80vw] md:w-[15vw] flex items-center `}
             >
-              <div className="overflow-y-auto max-h-[65vh] w-[15vw] scrollbar-thumb-slate-300 scrollbar-track-slate-200  scrollbar-thin">
+              <div className="overflow-y-auto max-h-[65vh]  scrollbar-thumb-slate-300 scrollbar-track-slate-200  scrollbar-thin">
                 {sideBarNavigation === "chats" &&
                   searchedUsers.map((user) => (
                     <div
