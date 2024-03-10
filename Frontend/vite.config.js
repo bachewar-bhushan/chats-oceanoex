@@ -8,7 +8,7 @@ export default defineConfig({
 		port: 8000,
 		proxy: {
 			"/api": {
-				target: "http://api.oceanoex.com",
+				target: "https://gochat.oceanoex.com",
 			},
 		},
 	},

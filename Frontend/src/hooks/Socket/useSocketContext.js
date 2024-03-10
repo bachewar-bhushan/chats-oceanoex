@@ -16,7 +16,7 @@ export const useSocketContext = () => {
 
   useEffect(() => {
     if (localStorage.getItem("userId") != undefined) {
-      socket = io("http://api.oceanoex.com", {
+      socket = io("https://gochat.oceanoex.com", {
         transports: ["websocket"],
         query: { userId: localStorage.getItem("userId") },
       });
