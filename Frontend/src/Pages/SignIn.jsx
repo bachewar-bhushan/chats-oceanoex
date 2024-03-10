@@ -2,9 +2,11 @@ import React from "react";
 import { useSignin } from "../hooks/User/useSignin";
 import { Link } from "react-router-dom";
 import { useStateManager } from "../zustand/useStateManager";
+import {useNavigate} from "react-router-dom";
 import Loading from "../Components/Utils/Loading";
 
 const SignIn = () => {
+  const navigate = useNavigate();
   const {loading} = useStateManager()
   const { signin } = useSignin();
   const HandleSignIn = (e) => {
@@ -12,7 +14,7 @@ const SignIn = () => {
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
     signin(email, password);
-    
+   
   };
 
   return (

@@ -6,7 +6,7 @@ import { useStateManager } from "../../zustand/useStateManager";
 
 export const useSignin = () => {
   const navigate = useNavigate();
-  const {loading, setLoading} = useStateManager();
+  const { loading, setLoading } = useStateManager();
 
   const handleInputErrors = (email, password) => {
     if (validator.isEmpty(email)) {
@@ -39,8 +39,13 @@ export const useSignin = () => {
       const data = await response.json();
       setLoading(false);
       if (response.ok) {
-        toast.success("Successfully logged in")
-        navigate("/conversation");
+        toast.success("Successfully logged in");
+
+        if (window.innerWidth < 640) {
+          navigate("/msidebarconversation");
+        } else {
+          navigate("/conversation");
+        }
       }
 
       if (data.error) {
