@@ -3,8 +3,10 @@ import { useStateManager } from "../../zustand/useStateManager";
 import { useGetAllUsers } from "../../hooks/Sidebar/useGetAllUsers";
 import { useCreateChat } from "../../hooks/Chat/useCreateChat";
 import { useGetGroups } from "../../hooks/Group/useGetGroups";
+import {useNavigate} from "react-router-dom"
 
 const SideBarSearch = () => {
+  const navigate = useNavigate();
   const {
     allUsers,
     divisionDisplay,
@@ -48,11 +50,17 @@ const SideBarSearch = () => {
     const handleSearchedUserClick = (user) => {
       setReceiverId(user._id);
       setNewMessage([]);
+      if (window.innerWidth < 640) {
+        navigate("/mchatspaceconversation");
+      }
     };
 
     const handleSearchedGroupClick = (group) => {
      setSelectedGroup(group);
      setNewMessage([]);
+     if (window.innerWidth < 640) {
+      navigate("/mchatspaceconversation");
+    }
     };
 
     return (
@@ -64,7 +72,7 @@ const SideBarSearch = () => {
                 !divisionDisplay && "hidden"
               } relative top-full left-0 bg-slate-200 border border-gray-300 my-2 rounded-md w-[80vw] md:w-[15vw] flex items-center `}
             >
-              <div className="overflow-y-auto max-h-[65vh]  scrollbar-thumb-slate-300 scrollbar-track-slate-200  scrollbar-thin">
+              <div className="overflow-y-auto max-h-[65vh] w-[80vw] md:w-[15vw] scrollbar-thumb-slate-300 scrollbar-track-slate-200  scrollbar-thin">
                 {sideBarNavigation === "chats" &&
                   searchedUsers.map((user) => (
                     <div
