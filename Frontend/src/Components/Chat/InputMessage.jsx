@@ -75,11 +75,11 @@ const InputMessage = () => {
 
   return (
     <>
-      <div className="mt-8 h-[5vh] bg-slate-100 mb-5 flex md:justify-center items-center  ">
+      <div className="mt-8 h-[5.3vh] bg-slate-100 mb-5 flex md:justify-center items-center  ">
         <ImageContainer />
         <form
           ref={emojiRef}
-          className="flex space-x-4"
+          className="flex space-x-3"
           encType="multipart/form-data"
           method="post"
         >
@@ -87,7 +87,7 @@ const InputMessage = () => {
             <BsEmojiSmile />
           </button>
           {showEmoji && (
-            <div className="absolute bottom-[11vh] left-[26.5vw]">
+            <div className="absolute bottom-[11vh] left-[3.5vw] md:bottom-[11vh] md:left-[26.5vw]">
               <Picker
                 data={data}
                 emojiSize={20}

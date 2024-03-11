@@ -38,7 +38,7 @@ const ChattingSpace = () => {
               key={key}
               className={`${side} break-all float-left clear-both text-xl bg-slate-200 font-normal m-2 max-w-[70vw] md:max-w-[40vw] px-3 rounded-[15px] flex items-center  messagecontainer ${highlight}`}
             >
-              {sideBarNavigation === "chats" && <div className="text-xl text-wrap md:text-md whitespace-break-spaces hyphens-auto">{message}</div>} {/* change */}
+              {sideBarNavigation === "chats" && <div className="break-words text-xl text-wrap md:text-md whitespace-break-spaces hyphens-auto">{message}</div>} {/* change */}
               {sideBarNavigation === "groups" && (
                 <div className="flex flex-col text-wrap">
                   <div className="flex my-2">
@@ -47,7 +47,7 @@ const ChattingSpace = () => {
                     </div>
                     <div className="text-sm font-semibold">{fullName}</div>
                   </div>
-                  <div className="text-xl md:text-md text-wrap px-2 mb-2 whitespace-break-spaces hyphens-auto" >{message}</div> {/* change */}
+                  <div className="break-words text-xl md:text-md text-wrap px-2 mb-2 whitespace-break-spaces hyphens-auto" >{message}</div> {/* change */}
                 </div>
               )}
             </div>
@@ -100,7 +100,7 @@ const ChattingSpace = () => {
                     </div>
                     <div className="text-sm font-semibold">{fullName}</div>
                   </div>
-                  <div className="text-xl md:text-md text-wrap px-2 mb-2 whitespace-break-spaces hyphens-auto">{message}</div> {/* change */}
+                  <div className="break-words text-xl md:text-md text-wrap px-2 mb-2 whitespace-break-spaces hyphens-auto">{message}</div> {/* change */}
                 </div>
               )}
             </div>

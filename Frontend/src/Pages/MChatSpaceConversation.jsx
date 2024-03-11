@@ -9,7 +9,7 @@ const MChatSpaceConversation = () => {
   const { groupFormDivision } = useStateManager();
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <div className="flex">
         <div className={`flex ${groupFormDivision ? "opacity-40" : ""}`}>
           <div className="right w-[80vw] h-[93vh]">
