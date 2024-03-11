@@ -10,11 +10,16 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emoji-mart/data": "^1.1.2",
+    "@emoji-mart/react": "^1.1.1",
     "chat-app": "file:..",
     "cors": "^2.8.5",
+    "emoji-mart": "^5.5.2",
+    "moment": "^2.30.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.4.1",
+    "react-icons": "^5.0.1",
     "react-loader-spinner": "^6.1.6",
     "react-router-dom": "^6.22.0",
     "react-scroll-to-bottom": "^4.2.0",
