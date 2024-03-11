@@ -42,21 +42,21 @@ export const sendGroupMessage = async (req, res) => {
           senderSocketId,
           photo,
           fullName,
-          profilePic
+          profilePic,
         });
       } else if (photo === undefined && message !== null) {
         io.in(groupId).emit("newGroupMessage", {
           message,
           senderSocketId,
           fullName,
-          profilePic
+          profilePic,
         });
       } else if (photo && message === null) {
         io.in(groupId).emit("newGroupMessage", {
           senderSocketId,
           photo,
           fullName,
-          profilePic
+          profilePic,
         });
       }
 
@@ -120,25 +120,10 @@ export const getGroups = async (req, res) => {
     const loggedInUser = req.user._id;
     const groupsChats = await GroupChat.find({
       participants: { $all: [loggedInUser] },
-    }).populate({
-      path: "messages",
-      populate: {
-      path: "sender",
-  },
-
     })
-    const populatedGroups = await Promise.all(
-      groupsChats.map(async (groupChat) => {
-        if (groupChat.messages.length > 0) {
-          const lastMessage = groupChat.messages[0];
-          await Message.populate(lastMessage, { path: "sender" });
-          groupChat.lastMessage = lastMessage;
-        }
-        return groupChat;
-      })
-    );
+      .slice("messages", -1)
+      .populate({ path: "messages", select: "message sender -_id" }); // changed
 
-    
     res.status(201).json(groupsChats);
   } catch (error) {
     console.error(error.message);
