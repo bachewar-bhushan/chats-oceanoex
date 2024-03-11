@@ -32,6 +32,32 @@ const SideBarUser = (props) => {
       navigate("/mchatspaceconversation");
     }
   };
+
+  const sliceMessage = (message) => {
+    const maxLength = 25; // Adjust this according to your needs
+
+    if (!message) return ""; // Return empty string if message is not provided
+
+    if (message.length <= maxLength) {
+      return message; // If message length is less than or equal to maxLength, return the original message
+    } else {
+      // Split the message into words
+      const words = message.split(" ");
+      let slicedMessage = "";
+
+      // Iterate over words until the length limit is reached
+      for (let word of words) {
+        if ((slicedMessage + word).length <= maxLength) {
+          slicedMessage += word + " ";
+        } else {
+          break; // Stop if adding the next word exceeds the maxLength
+        }
+      }
+
+      // Trim any extra space at the end and add '...' to indicate the message was sliced
+      return slicedMessage.trim() + "...";
+    }
+  }
   return (
     <>
       {sideBarNavigation === "chats" && props.user && (
@@ -56,8 +82,8 @@ const SideBarUser = (props) => {
             <div className="text-slate-400">
               {props.user?.participants[0]?._id ===
                 selectedUser?.participants[0]?._id && newMessage.length > 0
-                ? newMessage[newMessage.length - 1].message
-                : props.user?.messages[0].message}
+                ? sliceMessage(newMessage[newMessage.length - 1].message)
+                : sliceMessage(props.user?.messages[0].message)}
             </div>
           </div>
         </div>
@@ -78,26 +104,24 @@ const SideBarUser = (props) => {
           <div className=" flex flex-col">
             <div className="text-xl">{props.group.groupName}</div>
             <div className="">
-          
-            {props.group.messages && props.group.messages.length > 0 ? (
-          <>
-            <div className="text-slate-600">
-              {props.group?._id === selectedGroup?._id &&
-              newMessage.length > 0
-                ? newMessage[newMessage.length - 1].fullName
-                : props.group?.messages[0].sender.fullName}
-            </div>
-            <div className="text-slate-400">
-              {props.group?._id === selectedGroup?._id &&
-              newMessage.length > 0
-                ? newMessage[newMessage.length - 1].message
-                : props.group?.messages[0].message}
-            </div>
-          </>
-        ) : (
-          <div className="text-slate-400">No messages yet.</div>
-        )}
-              
+              {props.group.messages && props.group.messages.length > 0 ? (
+                <>
+                  <div className="text-slate-600">
+                    {props.group?._id === selectedGroup?._id &&
+                    newMessage.length > 0
+                      ? newMessage[newMessage.length - 1].fullName
+                      : props.group?.messages[0].sender.fullName}
+                  </div>
+                  <div className="text-slate-400">
+                    {props.group?._id === selectedGroup?._id &&
+                    newMessage.length > 0
+                      ? sliceMessage(newMessage[newMessage.length - 1].message)
+                      : sliceMessage(props.group?.messages[0].message)}
+                  </div>
+                </>
+              ) : (
+                <div className="text-slate-400">No messages yet.</div>
+              )}
             </div>
           </div>
         </div>

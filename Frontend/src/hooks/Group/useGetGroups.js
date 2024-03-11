@@ -2,13 +2,13 @@ import { useEffect } from "react"
 import { useStateManager } from "../../zustand/useStateManager"
 
 export const useGetGroups = () =>{
-    const {setMyGroups, groupFormDivision} = useStateManager()
+    const {setMyGroups, groupFormDivision, selectedGroup} = useStateManager()
 
     
    useEffect(() =>{
     const getGroups = async() =>{
          try {
-       const response = await fetch(`/api/group/getgroups`, {
+       const response = await fetch(/api/group/getgroups, {
         method: "GET",
         headers : {"content-type": "application/json", authtoken: localStorage.getItem("authtoken")}
        })
@@ -20,5 +20,5 @@ export const useGetGroups = () =>{
     }
     }
    getGroups()
-   }, [groupFormDivision])                // TODO set loggedinuser for fetching all things at start
+   }, [groupFormDivision, selectedGroup])                // TODO set loggedinuser for fetching all things at start
 }

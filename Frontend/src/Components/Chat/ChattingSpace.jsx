@@ -36,18 +36,18 @@ const ChattingSpace = () => {
           {message !== "" && (
             <div
               key={key}
-              className={`${side} break-all float-left clear-both text-xl bg-slate-200 font-normal m-2 max-w-[50vw] md:max-w-[40vw] px-3 rounded-[15px] flex items-center  messagecontainer ${highlight}`}
+              className={`${side} break-all float-left clear-both text-xl bg-slate-200 font-normal m-2 max-w-[70vw] md:max-w-[40vw] px-3 rounded-[15px] flex items-center  messagecontainer ${highlight}`}
             >
-              {sideBarNavigation === "chats" && <div className="text-2xl md:text-md">{message}</div>}
+              {sideBarNavigation === "chats" && <div className="text-xl text-wrap md:text-md whitespace-break-spaces hyphens-auto">{message}</div>} {/* change */}
               {sideBarNavigation === "groups" && (
-                <div className="flex flex-col break-words">
+                <div className="flex flex-col text-wrap">
                   <div className="flex my-2">
                     <div className="h-6 w-6">
                       <img src={profilePic} alt="" />
                     </div>
                     <div className="text-sm font-semibold">{fullName}</div>
                   </div>
-                  <div className="text-2xl md:text-md break-words px-2 mb-2" >{message}</div>
+                  <div className="text-xl md:text-md text-wrap px-2 mb-2 whitespace-break-spaces hyphens-auto" >{message}</div> {/* change */}
                 </div>
               )}
             </div>
@@ -89,18 +89,18 @@ const ChattingSpace = () => {
           {message && (
             <div
               key={key}
-              className={`${side} break-all float-right  text-xl clear-both  bg-blue-100 font-normal m-2  max-w-[40vw]  px-3 rounded-[15px] flex items-center messagecontainer ${highlight}`}
-            >
-              {sideBarNavigation === "chats" && <div className="text-2xl md:text-md">{message}</div>}
+              className={`${side} break-all float-right  text-xl clear-both  bg-blue-100 font-normal m-2  max-w-[70vw] md:max-w-[40vw] px-3 rounded-[15px] flex items-center messagecontainer ${highlight}`} 
+            >{/* change */}
+              {sideBarNavigation === "chats" && <div className="text-xl text-wrap md:text-md whitespace-break-spaces break-words hyphens-auto">{message}</div>} {/* change */}
               {sideBarNavigation === "groups" && (
-                <div className="flex flex-col break-words">
+                <div className="flex flex-col text-wrap">
                   <div className="flex my-2">
                     <div className="h-6 w-6">
                       <img src={profilePic} alt="" />
                     </div>
                     <div className="text-sm font-semibold">{fullName}</div>
                   </div>
-                  <div className="text-2xl md:text-md break-words px-2 mb-2">{message}</div>
+                  <div className="text-xl md:text-md text-wrap px-2 mb-2 whitespace-break-spaces hyphens-auto">{message}</div> {/* change */}
                 </div>
               )}
             </div>
@@ -110,7 +110,7 @@ const ChattingSpace = () => {
             <div
               key={key}
               className={`${side} my-4 float-right rounded-[15px] w-[50vw] md:w-[11vw] h-[26vh] bg-slate-200 flex justify-center items-center clear-both m-2 flex-col`}
-            >
+            >{/* change */}
               {sideBarNavigation === "groups" && (
                 <div>
                 <div className="flex items-center my-2">

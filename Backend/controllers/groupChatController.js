@@ -122,7 +122,14 @@ export const getGroups = async (req, res) => {
       participants: { $all: [loggedInUser] },
     })
       .slice("messages", -1)
-      .populate({ path: "messages", select: "message sender -_id" }); // changed
+      .populate({
+        path: "messages",
+        select: "message sender -_id",
+        populate: {
+          path: "sender",
+          select: "fullName -_id",
+        },
+      });
 
     res.status(201).json(groupsChats);
   } catch (error) {

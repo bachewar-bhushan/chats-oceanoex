@@ -5,17 +5,19 @@ const SideBarNavigator = () => {
     "border-b-4 border-indigo-400"
   );
   const [groupIndicator, setGroupIndicator] = useState("");
-  const { setSideBarNavigation} = useStateManager();
+  const { setSideBarNavigation, setNewMessage} = useStateManager();
   const handleChatClick = () => {
     setSideBarNavigation("chats");
     setChatIndicator("border-b-4 border-indigo-400");
     setGroupIndicator("");
+    setNewMessage([])
   };
 
   const handleGroupClick = () => {
     setSideBarNavigation("groups");
     setGroupIndicator("border-b-4 border-indigo-400");
     setChatIndicator("");
+    setNewMessage([])
   };
 
   return (

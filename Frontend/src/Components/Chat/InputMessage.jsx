@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useSendMessage } from "../../hooks/Message/useSendMessage";
 import { useStateManager } from "../../zustand/useStateManager";
 import { useSendGroupMessage } from "../../hooks/Group/useSendGroupMessage";
 import ImageContainer from "./ImageContainer";
+import data from "@emoji-mart/data";
+import Picker from "@emoji-mart/react";
+import { BsEmojiSmile } from "react-icons/bs";
 
 const InputMessage = () => {
+  const [showEmoji, setShowEmoji] = useState(false);
+  const [text, setText] = useState("");
   const {
     selectedUser,
     image,
@@ -15,12 +20,42 @@ const InputMessage = () => {
   } = useStateManager();
   const { sendMessage } = useSendMessage();
   const { sendGroupMessage } = useSendGroupMessage();
-  
+  const emojiRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (emojiRef.current && !emojiRef.current.contains(event.target)) {
+        setShowEmoji(false);
+      }
+    };
+
+    document.addEventListener("click", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, [setShowEmoji]);
+
+  const handleEmojiInputClick = (event) => {
+    event.stopPropagation();
+    setShowEmoji(true);
+  };
+
+  const addEmoji = (e) => {
+    const sym = e.unified.split("_");
+    const codeArray = sym.map((el) => parseInt(el, 16));
+
+    console.log("codeArray:", codeArray);
+
+    const emoji = String.fromCodePoint(...codeArray);
+    console.log("Emoji:", emoji);
+
+    setText((prevText) => prevText + emoji);
+  };
 
   const handleSend = async (e) => {
     e.preventDefault();
-    const message = document.getElementById("message").value;
-    // setNewMessage(null);
+    const message = text.trim(); // Get message from state instead of directly from the DOM
 
     const receiverId = selectedUser?.participants[0]?._id;
     const groupId = selectedGroup?._id;
@@ -31,33 +66,58 @@ const InputMessage = () => {
       await sendGroupMessage(groupId, message);
     }
 
-    document.getElementById("message").value = "";
+    // Clear the state instead of directly manipulating the DOM
+    setText("");
     setImage([]);
     setSelectedImage(null);
-    document.getElementById("message").focus();
+    setShowEmoji(false);
   };
+
   return (
     <>
-      <div className=" mt-8 h-[5vh] bg-slate-100 mb-5 flex md:justify-center items-center  ">
+      <div className="mt-8 h-[5vh] bg-slate-100 mb-5 flex md:justify-center items-center  ">
         <ImageContainer />
         <form
+          ref={emojiRef}
           className="flex space-x-4"
           encType="multipart/form-data"
           method="post"
         >
-          <label htmlFor=""></label>
-          <input
+          <button type="button" className="" onClick={handleEmojiInputClick}>
+            <BsEmojiSmile />
+          </button>
+          {showEmoji && (
+            <div className="absolute bottom-[11vh] left-[26.5vw]">
+              <Picker
+                data={data}
+                emojiSize={20}
+                emojiButtonSize={28}
+                onEmojiSelect={addEmoji}
+                maxFrequentRows={0}
+              />
+            </div>
+          )}
+
+          <textarea
             id="message"
-            className=" h-[7vh] w-[60vw] text-2xl rounded-xl shadow-lg  outline-none px-4"
-            type="text"
-          />
+            className="h-[7vh] resize-none overflow-y-auto max-h-[12vh] w-[60vw] text-2xl rounded-xl shadow-lg  outline-none px-4 py-2"
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" && !e.shiftKey) {
+                e.preventDefault();
+                handleSend(e);
+              }
+            }}
+          ></textarea>
+
           <div className="button-container h-[7vh] flex items-center  bg-slate-200 rounded-full w-[30vw] md:w-[6vw]">
             <div className="h-[8vh] w-[15vw] md:w-[3vw] p-4  bg-slate-200 rounded-l-full hover:bg-slate-300 flex items-center">
               <button
                 className="hover:animate-bounce ..."
                 type="button"
                 onClick={(e) => {
-                  e.preventDefault;
+                  e.preventDefault();
                   document.getElementById("photo").click();
                 }}
               >
