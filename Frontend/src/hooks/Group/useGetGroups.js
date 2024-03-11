@@ -8,7 +8,7 @@ export const useGetGroups = () =>{
    useEffect(() =>{
     const getGroups = async() =>{
          try {
-       const response = await fetch(/api/group/getgroups, {
+       const response = await fetch(`/api/group/getgroups`, {
         method: "GET",
         headers : {"content-type": "application/json", authtoken: localStorage.getItem("authtoken")}
        })
