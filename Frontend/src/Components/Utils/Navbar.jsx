@@ -6,16 +6,15 @@ const Navbar = () => {
   };
   return (
     <>
-      <div className="w-[100vw] h-[7vh] bg-slate-400 rounded-b-sm shadow-2xl space-x-4 flex items-center  pr-8 text-xl font-bold justify-between overflow-x-hidden">
+      <div className="w-[100vw] h-[7vh] bg-slate-400 rounded-b-sm shadow-2xl space-x-4 flex items-center text-xl font-bold justify-between overflow-x-hidden">
         <div className="flex justify-center items-center text-slate-50 gap-2 text-2xl mx-2 italic">
-          {/* <img className="size-[3vw]" src="/assets/logo.svg" alt="" /> */}
           Gochat
         </div>
         <div
           onClick={handleLogoutClick}
-          className="space-x-16 flex bg-slate-400 h-[7vh] w-[12vw] items-center justify-center"
+          className=" flex bg-slate-400 h-[7vh] items-center justify-center"
         >
-          <Link to="/signin" className="float-right">
+          <Link to="/signin" className="float-right mr-4">
             <svg
               className="size-[4vh]"
               xmlns="http://www.w3.org/2000/svg"

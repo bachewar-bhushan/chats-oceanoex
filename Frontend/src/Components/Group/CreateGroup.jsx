@@ -81,11 +81,11 @@ const CreateGroup = () => {
   return (
     <>
       {groupFormDivision && (
-        // width and left changed
+       
         <div className="flex justify-center items-center w-[90vw] sm:w-[37vw] h-[80vh] bg-slate-300 absolute top-[10vh] left-[5vw] sm:left-[40vw] shadow-xl border border-collapse">
-          {/* width changed */}
+        
           <div className="flex flex-col justify-center items-center w-[83vw] sm:w-[30vw] h-[76vh]">
-            {/* width and padding changed */}
+          
           <div className="w-[83vw] sm:w-[37vw] flex justify-end sm:pr-6 cursor-pointer" onClick={handleCancel}>
             <svg
             className="size-[4vh]"
@@ -100,7 +100,7 @@ const CreateGroup = () => {
               <p className=" text-lg font-semibold text-slate-600">
                 Group Name
               </p>
-              {/* width and mr changed */}
+              
               <input
                 className="px-[3vw] sm:px-[1vw] h-[6.5vh] w-[73vw] sm:w-[20vw] text-lg  bg-slate-100 border  rounded-md mr-[2vw] sm:mr-24 outline-none text-slate-600"
                 value={groupName}
@@ -110,13 +110,13 @@ const CreateGroup = () => {
                 onChange={(e) => setGroupName(e.target.value)}
               />
             </div>
-            {/* margin changed and width added margin small screen removed*/}
+          
             <p className="w-[73vw] sm:w-[20vw] sm:mr-[6vw] mb-2 text-lg font-semibold text-slate-600">
               Participants
             </p>
-            {/* width changed */}
+           
             <div className="flex w-[73vw] sm:w-[25vw] h-[40vh] sm:mr-[1vw] overflow-y-auto scrollbar-thin  scrollbar-thumb-slate-300 scrollbar-track-slate-200  justify-center bg-slate-100 rounded-xl">
-              {/* columns and gap and margin changed */}
+        
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-8 sm:gap-4 mt-1 sm:mt-4 pl-2">
                 {groupParticipants &&
                   Array.isArray(groupParticipants) &&
@@ -137,16 +137,13 @@ const CreateGroup = () => {
                     );
                   })}
               </div>
-              {/* <div>
-                <button onClick={handleSubmit}>submit</button>
-              </div> */}
             </div>
             
             <div className="">
               <div>
                 <form action="">
                   <div className="sm:flex h-[6vh] w-[73vw] sm:w-[20vw] sm:justify-center sm:items-center mt-[2vh] sm:mr-[10vw]">
-                    {/* width changed */}
+                    
                     <input
                       className="outline-none mr-[1vw] p-4 h-[4vh] w-[29vw] sm:w-[15vw] text-xl rounded-full bg-slate-100"
                       onChange={handleSearch}
@@ -157,7 +154,7 @@ const CreateGroup = () => {
                 </form>
                 {searchDivision()}
               </div>
-              <button onClick={handleSubmit} className="float-right bg-blue-300 w-[12vw] sm:w-[7vw] h-[5vh]  font-semibold rounded-md cursor-pointer hover:bg-blue-400">
+              <button onClick={handleSubmit} className="float-right bg-blue-300 w-[15vw] sm:w-[7vw] h-[5vh]  font-semibold rounded-md cursor-pointer hover:bg-blue-400">
                 Submit
               </button>
             </div>

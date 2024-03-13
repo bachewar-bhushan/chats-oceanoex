@@ -118,7 +118,8 @@ const SideBarSearch = () => {
   });
 
   const searchedGroups = myGroups.filter((group) => {
-    group.groupName.toLowerCase().includes(query.trim().toLowerCase())
+    const groups = group.groupName.toLowerCase().includes(query.toLowerCase())
+    return groups;
   });
 
   const handleSearch = (event) => {

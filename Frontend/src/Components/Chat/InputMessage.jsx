@@ -83,24 +83,25 @@ const InputMessage = () => {
           encType="multipart/form-data"
           method="post"
         >
-          <button type="button" className="" onClick={handleEmojiInputClick}>
-            <BsEmojiSmile />
-          </button>
           {showEmoji && (
             <div className="absolute bottom-[11vh] left-[3.5vw] md:bottom-[11vh] md:left-[26.5vw]">
               <Picker
                 data={data}
                 emojiSize={20}
-                emojiButtonSize={28}
+                emojiButtonSize={30}
                 onEmojiSelect={addEmoji}
                 maxFrequentRows={0}
               />
             </div>
           )}
+         <div className="bg-white ml-2 flex space-x-2 rounded-xl shadow-lg  w-[64vw] items-center"><button type="button" className="mx-2" onClick={handleEmojiInputClick}>
+            <BsEmojiSmile />
+          </button>
+          
 
           <textarea
             id="message"
-            className="h-[7vh] resize-none overflow-y-auto max-h-[12vh] w-[60vw] text-2xl rounded-xl shadow-lg  outline-none px-4 py-2"
+            className="h-[7vh] resize-none overflow-y-auto max-h-[12vh] w-[53vw] md:w-[62vw] text-2xl  outline-none px-4 py-4 md:py-2 rounded-xl"
             value={text}
             onChange={(e) => setText(e.target.value)}
             onKeyDown={(e) => {
@@ -109,7 +110,7 @@ const InputMessage = () => {
                 handleSend(e);
               }
             }}
-          ></textarea>
+          ></textarea></div> 
 
           <div className="button-container h-[7vh] flex items-center  bg-slate-200 rounded-full w-[30vw] md:w-[6vw]">
             <div className="h-[8vh] w-[15vw] md:w-[3vw] p-4  bg-slate-200 rounded-l-full hover:bg-slate-300 flex items-center">
